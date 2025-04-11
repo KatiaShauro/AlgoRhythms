@@ -1,6 +1,6 @@
 import pytest
-from src.CubeProblem import CubeProblem
-from src.CubePathFinder import CubePathFinder
+from src.vol3.CubeProblem import CubeProblem
+from src.vol3.CubePathFinder import CubePathFinder
 
 @pytest.fixture
 def sample_problem():

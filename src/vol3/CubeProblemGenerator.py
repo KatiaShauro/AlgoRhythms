@@ -1,6 +1,6 @@
 import random
 from typing import List, Tuple
-from src.CubeProblem import CubeProblem
+from src.vol3.CubeProblem import CubeProblem
 
 
 class CubeProblemGenerator:

@@ -1,5 +1,5 @@
 import pytest
-from src.CubeProblem import CubeProblem
+from src.vol3.CubeProblem import CubeProblem
 
 def test_problem_initialization():
     grid = [[1, 2], [3, 4]]

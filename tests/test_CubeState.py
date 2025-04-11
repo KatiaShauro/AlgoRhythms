@@ -1,5 +1,5 @@
 import pytest
-from src.CubeState import CubeState
+from src.vol3.CubeState import CubeState
 
 def test_cube_state_creation():
     state = CubeState(x=1, y=2, top=3, front=4, right=5)

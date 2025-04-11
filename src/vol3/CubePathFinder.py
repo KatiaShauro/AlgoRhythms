@@ -3,7 +3,7 @@ from typing import List, Tuple
 from collections import deque, defaultdict
 from itertools import count
 
-from src.CubeState import CubeState
+from src.vol3.CubeState import CubeState
 
 
 class CubePathFinder:

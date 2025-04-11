@@ -1,5 +1,5 @@
 import pytest
-from src.CubeProblemGenerator import CubeProblemGenerator
+from src.vol3.CubeProblemGenerator import CubeProblemGenerator
 
 def test_generate_field():
     field = CubeProblemGenerator.generate_field(2, 2)

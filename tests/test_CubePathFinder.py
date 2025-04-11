@@ -1,6 +1,6 @@
 import pytest
-from src.CubePathFinder import CubePathFinder
-from src.CubeState import CubeState
+from src.vol3.CubePathFinder import CubePathFinder
+from src.vol3.CubeState import CubeState
 
 @pytest.fixture
 def sample_finder():
