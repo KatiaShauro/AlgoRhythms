@@ -61,6 +61,7 @@ def main_treap():
     ]
 
 
+
     for _ in coms:
         if _[0] == "Add":
             bb.add(_[1])
