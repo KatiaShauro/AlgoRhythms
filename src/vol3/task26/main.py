@@ -1,6 +1,6 @@
 from BlackBox import BlackBox
 from src.vol3.task26.BlackBoxTreap import BlackBoxTreap
-from typing import List
+from typing import List, Dict
 
 
 def print_treap_elements(root, elements=None):
@@ -81,6 +81,22 @@ def execute(coms : List):
             print(f"Add({c[1]}): i={bb.i}, BlackBox={sorted([-x for x in bb.max_heap] + bb.min_heap)}")
         else:
             print(f"Get(): i={bb.i + 1}, Result={bb.get()}")
+
+def get_info(self) -> Dict[str, str]:
+    cond = ('Черный ящик организован наподобие примитивной базы данных. Он может хранить набор целых чисел и имеет'
+            'выделенную переменную i. В начальный момент времени черный ящик пуст, а значение переменной i равно нулю.'
+            'Черный ящик обрабатывает некоторую последовательность поступающих команд (запросов). Существует два'
+            ' вида запросов:'
+            '1) Add (x) – положить в черный ящик элемент x;'
+            '2) Get – увеличить значение переменной i на 1 и выдать копию i-го минимального элемента черного ящика.'
+            'Напомним, что i-м минимальным элементом последовательности называется число, которое стоит на i-м месте'
+            ' в отсортированной по неубыванию последовательности.')
+    return {
+            "title": "Черный ящик",
+            "condition": cond,
+            "input": "Список кортежей (command, number), где command - Add или Get, number - число, над которым производится операция",
+            "output": "Изменения в черном ящике."
+    }
 
 
 if __name__ == '__main__':
