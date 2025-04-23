@@ -1,7 +1,8 @@
-from typing import List, Tuple
+from typing import List, Tuple, Dict
+from abstractions.task import Task
 
 
-class Task34_vol2:
+class Task34_vol2(Task):
     def dp_solution(self, arr: List[Tuple[int, int]]) -> Tuple[int, int]:
         delta = []
         d = 0
@@ -34,6 +35,14 @@ class Task34_vol2:
 
     def execute(self, arr: List[Tuple[int, int]]) -> Tuple[int, int]:
         return self.dp_solution(arr)
+    
+    def get_info(self) -> Dict[str, str]:
+        return {
+            "title": "Минимизация отклонения",
+            "condition": "Дана последовательность пар чисел. Найти минимальное абсолютное отклонение сумм разностей и количество изменений.",
+            "input": "Список кортежей (a, b), где a и b — целые числа.",
+            "output": "Кортеж из двух целых: (минимальное количество изменений, минимальное отклонение)."
+        }
 
     def greedy_solution(self, arr: List[Tuple[int, int]]) -> Tuple[int, int]:
         delta = []
