@@ -58,3 +58,64 @@ class Tree:
     def delete_node(self, key: int):
         self.root = Node.delete_node(key, self.root)
         self.quantity -= 1
+
+
+    def tree_to_str(self):
+        pr = Node.tree_to_list(self.root)
+        print(pr)
+
+
+    @staticmethod
+    def compare_trees(largest_tree: 'Tree', smallest_tree: 'Tree'):
+        large = Node.tree_to_list(largest_tree.root)
+        small = Node.tree_to_list(smallest_tree.root)
+
+        if abs(len(large) - len(small)) != 1:
+            return "The number of nodes varies by more than one", None
+
+        if len(large) < len(small):
+            large, small = small, large
+
+        is_modified = False
+        candidate = None
+        for index, node in enumerate(small):
+            if large[index][1] == small[index][1]:
+                continue
+            elif is_modified and large[index + 1][1] == small[index][1]:
+                continue
+            elif large[index][1] == 'LR' and (small[index][1] == 'L' or small[index][1] == 'R'):
+                if is_modified: return "Impossible", None
+                is_modified = True
+                if small[index][1] == 'L':
+                    stick_counter = 0
+                    i = index - 1
+                    while large[i][1] != 'LR' and stick_counter != 0 or i != 0:
+                        if large[i][1] == '|': stick_counter += 1
+                        if large[i][1] == 'LR': stick_counter -= 1
+                        i -= 1
+                    if i == 0: candidate = large[len(large) - 1][0]
+                    else: candidate = large[i][0] # чето не то, разобраться
+                else: candidate = large[index][0]
+                continue
+            elif large[index][1] == '|' and small[index][1] != '|':
+                if not is_modified: return "Impossible", None
+                continue
+            elif large[index][1] == 'L' or large[index][1] == 'R' and small[index][1] == '|':
+                if is_modified: return "Impossible", None
+                is_modified = True
+                if large[index][1] == 'R':
+                    candidate = large[index][0]
+                    continue
+                elif large[index][1] == 'L':
+                    stick_counter = 0
+                    i = index - 1
+                    while large[i][1] != 'LR' and stick_counter != 0 or i != -1:
+                        if large[i][1] == '|': stick_counter += 1
+                        if large[i][1] == 'LR': stick_counter -= 1
+                        i -= 1
+                    if i == 0: candidate = large[len(large) - 1][0]
+                    else: candidate = large[i][0]
+                    continue
+                else: return "Impossible", None
+            return "Impossible", None
+        return "Possible", candidate

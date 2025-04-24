@@ -103,4 +103,21 @@ class Node:
         return node
 
 
+    @staticmethod
+    def tree_to_list(node: 'Node'):
+        if node is None:
+            return []
+        result = []
+        if node.left or node.right:
+            lr = ''
+            if node.left:
+                lr += 'L'
+            if node.right:
+                lr += 'R'
+            result.append((node.key, lr))
+        else:
+            result.append((node.key, '|'))
 
+        result += Node.tree_to_list(node.left)
+        result += Node.tree_to_list(node.right)
+        return result
