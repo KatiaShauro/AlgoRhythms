@@ -5,6 +5,13 @@ class Tree:
     quantity: int = 0
     height: int = -1
 
+    def __init__(self, numbers : list):
+        for num in numbers:
+            if type(num) is not int or num <= 0:
+                print(f"Incorrect list format: {num}")
+            else:
+                self.insert(num, "value")
+
 
     def insert(self, key: int, value: str = "value"):
         self.root = Node.insert(key, value, self.root)
@@ -83,39 +90,32 @@ class Tree:
                 continue
             elif is_modified and large[index + 1][1] == small[index][1]:
                 continue
-            elif large[index][1] == 'LR' and (small[index][1] == 'L' or small[index][1] == 'R'):
-                if is_modified: return "Impossible", None
+            elif (large[index][1] == 'LR' and (small[index][1] == 'L' or small[index][1] == 'R'))\
+                or (large[index][1] == 'L' or large[index][1] == 'R' and small[index][1] == '|'):
+
+                if is_modified:
+                    return "Impossible", None
                 is_modified = True
-                if small[index][1] == 'L':
+
+                if small[index][1] == 'L' or large[index][1] == 'L':
                     stick_counter = 0
                     i = index - 1
-                    while large[i][1] != 'LR' and stick_counter != 0 or i != 0:
+                    while i != -1:
+                        if large[i][1] == 'LR' and stick_counter == 0:
+                            break
                         if large[i][1] == '|': stick_counter += 1
                         if large[i][1] == 'LR': stick_counter -= 1
                         i -= 1
-                    if i == 0: candidate = large[len(large) - 1][0]
-                    else: candidate = large[i][0] # чето не то, разобраться
-                else: candidate = large[index][0]
+                    if i == -1:
+                        candidate = large[len(large) - 1][0]
+                    else:
+                        candidate = large[i][0]
+                else:
+                    candidate = large[index][0]
                 continue
             elif large[index][1] == '|' and small[index][1] != '|':
-                if not is_modified: return "Impossible", None
+                if not is_modified:
+                    return "Impossible", None
                 continue
-            elif large[index][1] == 'L' or large[index][1] == 'R' and small[index][1] == '|':
-                if is_modified: return "Impossible", None
-                is_modified = True
-                if large[index][1] == 'R':
-                    candidate = large[index][0]
-                    continue
-                elif large[index][1] == 'L':
-                    stick_counter = 0
-                    i = index - 1
-                    while large[i][1] != 'LR' and stick_counter != 0 or i != -1:
-                        if large[i][1] == '|': stick_counter += 1
-                        if large[i][1] == 'LR': stick_counter -= 1
-                        i -= 1
-                    if i == 0: candidate = large[len(large) - 1][0]
-                    else: candidate = large[i][0]
-                    continue
-                else: return "Impossible", None
             return "Impossible", None
         return "Possible", candidate
