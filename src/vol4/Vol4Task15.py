@@ -39,7 +39,6 @@ def solve():
         subset0 = [i for i in range(1, n + 1) if color[i] == 0]
         subset1 = [i for i in range(1, n + 1) if color[i] == 1]
 
-        # Выбираем большую долю
         max_subset = subset0 if len(subset0) > len(subset1) else subset1
         print(f"Максимальное подмножество: {max_subset}")
         print(f"Размер подмножества: {len(max_subset)}")
