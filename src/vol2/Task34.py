@@ -1,5 +1,5 @@
 from typing import List, Tuple, Dict
-from abstractions.task import Task
+from src.abstractions.task import Task
 
 
 class Task34_vol2(Task):

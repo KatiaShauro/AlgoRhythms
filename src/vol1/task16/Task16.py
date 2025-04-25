@@ -1,7 +1,7 @@
 from typing import List, Tuple, Dict
 
-from vol1.tree_structure import Tree, Node
-from abstractions.task import Task
+from src.vol1.tree_structure import Tree, Node
+from src.abstractions.task import Task
 
 
 class Task16_vol1(Task):
