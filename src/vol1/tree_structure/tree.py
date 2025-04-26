@@ -1,4 +1,4 @@
-from vol1.tree_structure import Node
+from src.vol1.tree_structure import Node
 
 class Tree:
     root : Node = None
