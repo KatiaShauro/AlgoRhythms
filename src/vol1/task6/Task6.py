@@ -1,4 +1,3 @@
-from copy import copy
 from typing import List, Tuple, Dict
 
 from src.vol1.tree_structure import Tree, Node
@@ -11,8 +10,11 @@ class Task16_vol1(Task):
 
     def find_max_way(self, node: Node, root: Node, stack : List):
         u = node
+        if not node:
+            return
+
         way = u.get_way_len()
-        if self.max_way <= way:
+        if self.max_way <= way and u.key >= root.key:
             stack.clear()
             root = u
             self.max_way = way
@@ -37,7 +39,7 @@ class Task16_vol1(Task):
             return stack
         else:
             self.find_max_way(next_node, root, stack)
-            if way == self.max_way:
+            if way == self.max_way and u in stack and u.key >= root.key:
                 self.find_max_way(root_opposit, root, stack)
         return stack
 
@@ -51,6 +53,7 @@ class Task16_vol1(Task):
 
 #tree = Tree([50, 20, 10, 5, 30, 60, 70, 65, 64, 63, 62, 61, 80, 90, 75, 100, 95, 97])
 tree = Tree([50, 20, 10, 9, 30, 29, 28, 27, 33, 35, 34, 37, 40, 100, 120])
+#tree = Tree([60, 50, 30, 20, 40, 10, 25, 35, 33])
 t = Task16_vol1(tree)
 ar = t.find_max_way(tree.root, tree.root, [])
 print(ar)
