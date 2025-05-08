@@ -114,10 +114,25 @@ class Node:
                 lr += 'L'
             if node.right:
                 lr += 'R'
-            result.append((node.key, lr))
+            result.append((node.key, lr, node.height))
         else:
-            result.append((node.key, '|'))
+            result.append((node.key, '|', node.height))
 
         result += Node.tree_to_list(node.left)
         result += Node.tree_to_list(node.right)
         return result
+
+
+    def get_way_len(self):
+        index = 0
+        if self.left:
+            index += 1
+            index += self.left.height
+        if self.right:
+            index += 1
+            index += self.right.height
+        return index
+
+
+    def __repr__(self):
+        return f"(key = {self.key}, h = {self.height})"
