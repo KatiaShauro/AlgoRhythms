@@ -1,13 +1,17 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import ast
-from vol2.Task34 import Task34_vol2
-from vol1.task16.Task16 import Task16_vol1
-from vol1.task6.Task6 import Task6_vol1
 
+from src.vol2.Task34 import Task34_vol2
+from src.vol1.task16.Task16 import Task16_vol1
+from vol1.task6.Task6 import Task6_vol1
+from src.vol3.task25.main import Task25_vol3
+from src.vol3.task26.main import Task26_vol3
 
 # Dictionary of available tasks
 TASKS = {
+    'Task25 Vol3': Task25_vol3(),
+    'Task26 Vol3': Task26_vol3(),
     'Task34 Vol2': Task34_vol2(),
     'Task16 Vol1': Task16_vol1(),
     'Task6 Vol1': Task6_vol1(),
