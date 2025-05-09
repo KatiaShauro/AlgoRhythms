@@ -19,8 +19,8 @@ class Tree:
         self.height = self.root.height
 
 
-    def print_tree(self):
-        Node.print_tree(self.root)
+    def print_tree(self) -> str:
+        return Node.print_tree(self.root)
 
 
     def find_node(self, key: int):
@@ -70,4 +70,5 @@ class Tree:
     def tree_to_str(self):
         pr = Node.tree_to_list(self.root)
         print(pr)
+
 

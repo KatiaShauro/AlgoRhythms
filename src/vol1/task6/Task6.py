@@ -46,18 +46,18 @@ class Task6_vol1(Task):
         return stack, self.root
 
 
-    def first_part_of_solution(self, nodes : List[int]) -> (str, int, int):
+    def first_part_of_solution(self, itree: Tree) -> (str, int, int):
         s = ''
-        if not nodes:
+        if not itree:
             return s
-        tree = Tree(nodes)
+        tree = itree
         self.max_way = tree.root.get_way_len()
         self.root = tree.root
         (arr, root) = self.find_max_way(tree.root, [])
         arr = list(reversed(arr)) if arr[-1].key < arr[0].key else arr.copy()
         length = len(arr)
         half = int(length/2)
-        print(length)
+
         for a in arr:
             s += str(a.key) + ' '
 
@@ -69,8 +69,22 @@ class Task6_vol1(Task):
         return s, root.key, middle.key
 
 
-    def execute(self):
-        pass
+    def second_part(self, tree: Tree, root_key: int, middle_key: int):
+        tree.delete_node(root_key)
+
+        if root_key != middle_key:
+            tree.delete_node(middle_key)
+
+        return tree.print_tree()
+
+
+    def execute(self, vals : List[int]) -> str:
+        if not vals:
+            return "Empty tree!"
+        tree = Tree(vals)
+        s, root_key, middle_key = self.first_part_of_solution(tree)
+        str_tree = self.second_part(tree, root_key, middle_key)
+        return str_tree
 
 
     def get_info(self):
@@ -81,4 +95,4 @@ class Task6_vol1(Task):
 # tree = Tree([50, 20, 10, 9, 30, 29, 28, 27, 33, 35, 34, 37, 40, 100, 120])
 # tree = Tree([60, 50, 30, 20, 40, 10, 25, 35, 33])
 #
-print(Task6_vol1().first_part_of_solution([50, 20, 10, 30, 60]))
+print(Task6_vol1().execute([50, 20, 10, 30, 60]))

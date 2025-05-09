@@ -48,10 +48,13 @@ class Node:
     @staticmethod
     def print_tree(node: 'Node'):
         if node is None:
-            return
-        print(f"{node.key}  {node.value};")
-        Node.print_tree(node.left)
-        Node.print_tree(node.right)
+            return ''
+        current_str = f"{node.key} "
+
+        left_str = Node.print_tree(node.left)
+        right_str = Node.print_tree(node.right)
+
+        return current_str + left_str + right_str
 
 
     @staticmethod
