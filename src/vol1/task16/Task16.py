@@ -29,7 +29,7 @@ class Task16_vol1(Task):
                     return "Impossible", None
                 is_modified = True
 
-                if small[index][1] == 'L' or large[index][1] == 'L':
+                if small[index][1] == 'L' or large[index][1] == 'L' or large[index][1] == 'R':
                     stick_counter = 0
                     i = index - 1
                     while i != -1:
@@ -73,7 +73,7 @@ class Task16_vol1(Task):
 
 if __name__ == "__main__":
     task = Task16_vol1()
-    tree1 = Tree([80, 50, 40, 60, 100, 90, 110])
-    tree2 = Tree([80, 50, 40, 60, 100, 90])
-    res = task.compare_trees(tree2, tree1)
+    large = [50, 20, 100, 10, 30, 25, 22, 33, 35]
+    small = [50, 20, 100, 10, 30, 25, 22, 33]
+    res = task.execute(large, small)
     print(res)
