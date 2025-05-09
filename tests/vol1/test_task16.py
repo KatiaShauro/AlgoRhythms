@@ -39,7 +39,7 @@ class Test:
         expected = ('Possible', 110)
         assert result == expected
 
-    def test_5(self):
+    def test_6(self):
         large = [80, 50, 40, 60, 100, 90, 110]
         small = [80, 50, 40, 60, 70, 100]
         result = task.execute(large, small)
