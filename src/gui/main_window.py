@@ -3,12 +3,14 @@ from tkinter import ttk, messagebox
 import ast
 from vol2.Task34 import Task34_vol2
 from vol1.task16.Task16 import Task16_vol1
+from vol1.task6.Task6 import Task6_vol1
 
 
 # Dictionary of available tasks
 TASKS = {
     'Task34 Vol2': Task34_vol2(),
     'Task16 Vol1': Task16_vol1(),
+    'Task6 Vol1': Task6_vol1(),
     # Add more tasks here as needed, e.g.
     # 'Task35_example': Task35_example(),
 }

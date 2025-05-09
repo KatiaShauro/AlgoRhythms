@@ -48,10 +48,13 @@ class Node:
     @staticmethod
     def print_tree(node: 'Node'):
         if node is None:
-            return
-        print(f"{node.key}  {node.value};")
-        Node.print_tree(node.left)
-        Node.print_tree(node.right)
+            return ''
+        current_str = f"{node.key} "
+
+        left_str = Node.print_tree(node.left)
+        right_str = Node.print_tree(node.right)
+
+        return current_str + left_str + right_str
 
 
     @staticmethod
@@ -114,10 +117,25 @@ class Node:
                 lr += 'L'
             if node.right:
                 lr += 'R'
-            result.append((node.key, lr))
+            result.append((node.key, lr, node.height))
         else:
-            result.append((node.key, '|'))
+            result.append((node.key, '|', node.height))
 
         result += Node.tree_to_list(node.left)
         result += Node.tree_to_list(node.right)
         return result
+
+
+    def get_way_len(self):
+        index = 0
+        if self.left:
+            index += 1
+            index += self.left.height
+        if self.right:
+            index += 1
+            index += self.right.height
+        return index
+
+
+    def __repr__(self):
+        return f"(key = {self.key}, h = {self.height})"
